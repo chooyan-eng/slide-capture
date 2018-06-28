@@ -8,11 +8,10 @@ IMAGE_COMPARED="compared.jpg"
 raspistill -br 60 -vf -o ${IMAGE_AFTER}
 
 # compare
-# compare -metric AE -fuzz 50% ${IMAGE_AFTER} ${IMAGE_BEFORE} ${IMAGE_COMPARED}
+compare -metric AE -fuzz 10% ${IMAGE_AFTER} ${IMAGE_BEFORE} ${IMAGE_COMPARED}
 
 # predict ${IMAGE_COMPARE}
 python predict.py
-touch ${IMAGE_COMPARED}
 
 result=$?
 
