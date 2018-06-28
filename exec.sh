@@ -5,6 +5,7 @@ IMAGE_AFTER="after.jpg"
 IMAGE_COMPARED="compared.jpg"
 
 # capture slide > ${IMAGE_AFTER}
+raspistill -br 60 -vf -o ${IMAGE_AFTER}
 
 # compare
 # compare -metric AE -fuzz 50% ${IMAGE_AFTER} ${IMAGE_BEFORE} ${IMAGE_COMPARED}
@@ -16,7 +17,7 @@ touch ${IMAGE_COMPARED}
 result=$?
 
 # swich process by return command of predict.py
-if [ ${result} -eq 1] 
+if [ ${result} -eq 1 ] 
 then
   # send ${IMAGE_AFTER} to Azure
   echo "send image to Azure"
