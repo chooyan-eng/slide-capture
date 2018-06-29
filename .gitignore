@@ -1,4 +1,6 @@
 *.jpg
 *.png
 
+./config.ini
+
 old/
