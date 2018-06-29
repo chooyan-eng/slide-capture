@@ -12,14 +12,13 @@ compare -metric AE -fuzz 10% ${IMAGE_AFTER} ${IMAGE_BEFORE} ${IMAGE_COMPARED}
 
 # predict ${IMAGE_COMPARED}
 python predict.py ${IMAGE_COMPARED}
-
 result=$?
 
 # swich process by return command of predict.py
 if [ ${result} -eq 1 ] 
 then
   # send ${IMAGE_AFTER} to Azure
-  echo "send image to Azure"
+  az storage blob upload --container-name upload-slide --file ${IMAGE_AFTER} --name $1 
 fi
 
 # rename ${IMAGE_AFTER} to ${IMAGE_BEFORE}
