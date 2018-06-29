@@ -10,8 +10,8 @@ raspistill -br 60 -vf -o ${IMAGE_AFTER}
 # compare
 compare -metric AE -fuzz 10% ${IMAGE_AFTER} ${IMAGE_BEFORE} ${IMAGE_COMPARED}
 
-# predict ${IMAGE_COMPARE}
-python predict.py
+# predict ${IMAGE_COMPARED}
+python predict.py ${IMAGE_COMPARED}
 
 result=$?
 
@@ -25,5 +25,5 @@ fi
 # rename ${IMAGE_AFTER} to ${IMAGE_BEFORE}
 mv ${IMAGE_AFTER} ${IMAGE_BEFORE}
 
-# move IMAGE_COMPARE to old/
+# move IMAGE_COMPARED to old/
 mv ${IMAGE_COMPARED} old/`date +"%Y%m%d%H%M%s"`.jpg

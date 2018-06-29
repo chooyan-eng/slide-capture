@@ -1,5 +1,4 @@
-before.jpg
-after.jpg
-compared.jpg
+*.jpg
+*.png
 
 old/
